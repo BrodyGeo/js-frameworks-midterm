@@ -1,0 +1,25 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= title
+
+    div
+      table.table.table-striped
+        thead
+          tr
+            th Title
+            th
+        
+        tbody
+          each meta in metas
+            tr
+              td
+                a(href=`/metas/${meta.id}`)= meta.alias
+              td
+                a(href=`/metas/${meta.id}/edit`) Edit
+                = ` | `
+                form.destroy(action=`/metas/destroy`, method="POST", onsubmit='return confirm("Are you sure you wish to destroy this beautiful meta human? :(")')
+                  input(type="hidden", name="id", value=`${meta.id}`)
+                  input.destroy(type="submit", value="Destroy")
+          

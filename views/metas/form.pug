@@ -1,0 +1,25 @@
+form(action=(meta ? `/metas/update` : "/metas"), method="POST")
+  if meta
+    input(type="hidden", name="id", value=meta.id)
+
+  .form-group
+    label Alias
+    input.form-control(name="meta[alias]", required, value=(meta ? meta.alias : null))
+    
+  .form-group
+    label Full Name
+    input.form-control(name="meta[fullName]", required, value=(meta ? meta.fullName : null))
+
+  .form-group
+    label Affiliation
+    input.form-control(name="meta[affiliation]", required, value=(meta ? meta.affiliation : null))
+
+  .form-group
+        label Meta Type
+        select.form-control(name="meta[metaType]", required)
+            each metaType in ['SUPERHERO', 'VILLIAN', 'ANTI-HERO']
+                option(value=metaType, selected = (meta && meta.metaType === metaType))
+                    = metaType
+  
+  .form-group
+    button.btn.btn-dark(type="submit") Submit

@@ -1,0 +1,20 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= meta.alias
+
+    div
+      = `Full Name:`
+    div
+      = meta.fullName
+
+    div
+      = `Affiliation:`
+    div
+      = meta.affiliation
+
+    div
+      = `Meta Type:`
+    div
+      = meta.metaType
